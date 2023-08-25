@@ -5,7 +5,8 @@ import css from 'styles.module.css';
 export const Details = () => {
   const { id } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
+  const backLinkHref =
+    location.state?.from ?? '/goit-react-hw-05-movies/movies';
 
   const [selMov, setSelMov] = useState([]);
   useEffect(() => {
