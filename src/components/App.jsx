@@ -12,12 +12,12 @@ export const App = () => {
   return (
     <div>
       <Routes>
-        <Route exact path="/" element={<SharedLayout />}>
-          <Route exact index element={<Trending />} />
-          <Route exact path="movies" element={<SearchMovie />} />
-          <Route exact path="movies/:id" element={<Details />}>
-            <Route exact path="credits" element={<Credits />} />
-            <Route exact path="reviews" element={<Reviews />} />
+        <Route path="/home" element={<SharedLayout />}>
+          <Route index element={<Trending />} />
+          <Route path="movies" element={<SearchMovie />} />
+          <Route path="movies/:id" element={<Details />}>
+            <Route path="credits" element={<Credits />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>
       </Routes>
