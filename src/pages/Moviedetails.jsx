@@ -1,3 +1,4 @@
+import { getData } from 'FetchApi';
 import { Suspense, useEffect, useState } from 'react';
 import { Link, useParams, useLocation, Outlet } from 'react-router-dom';
 import css from 'styles.module.css';
@@ -10,16 +11,7 @@ export const Details = () => {
 
   const [selMov, setSelMov] = useState([]);
   useEffect(() => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZTJlYjhmY2Y4MjgxZDk2MzUxZDM3NzkwYjY4NDliMyIsInN1YiI6IjY0ZTY1MWI1MDZmOTg0MDBjYTU0M2IxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Jl0g1qZXpWsls6NI2whWYvOEA3R_4Z8tBb5aQwqzmWs',
-      },
-    };
-    fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options)
-      .then(response => response.json())
+    getData(`https://api.themoviedb.org/3/movie/${id}?language=en-US`)
       .then(data => {
         setSelMov(data);
       })

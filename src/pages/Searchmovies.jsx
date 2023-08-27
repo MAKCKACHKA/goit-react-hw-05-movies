@@ -1,3 +1,4 @@
+import { getData } from 'FetchApi';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import css from 'styles.module.css';
@@ -31,20 +32,9 @@ const SearchMovie = () => {
   };
 
   useEffect(() => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZTJlYjhmY2Y4MjgxZDk2MzUxZDM3NzkwYjY4NDliMyIsInN1YiI6IjY0ZTY1MWI1MDZmOTg0MDBjYTU0M2IxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Jl0g1qZXpWsls6NI2whWYvOEA3R_4Z8tBb5aQwqzmWs',
-      },
-    };
-
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${movieTitle}&include_adult=false&language=en-US&page=${page}`,
-      options
+    getData(
+      `https://api.themoviedb.org/3/search/movie?query=${movieTitle}&include_adult=false&language=en-US&page=${page}`
     )
-      .then(response => response.json())
       .then(data => {
         setMov(data.results);
         setIsLoading(false);
@@ -117,7 +107,7 @@ const SearchMovie = () => {
                   </li>
                 ))}
               </ul>
-              {submit && (
+              {movies.length !== 0 && (
                 <button className={css.Button} type="button" onClick={plusPage}>
                   Next page
                 </button>
