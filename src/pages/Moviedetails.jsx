@@ -82,7 +82,9 @@ export const Details = () => {
               </Link>
             </li>
           </ul>
-          <Suspense fallback={<div>Loading subpage...</div>}>
+          <Suspense
+            fallback={<div className={css.NotFound}>Loading subpage...</div>}
+          >
             <Outlet />
           </Suspense>
         </div>

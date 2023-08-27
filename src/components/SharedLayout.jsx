@@ -15,7 +15,7 @@ const SharedLayout = () => {
           </Link>
         </nav>
       </header>
-      <Suspense fallback={<div>Loading subpage...</div>}>
+      <Suspense fallback={<div className={css.NotFound}>Loading page...</div>}>
         <Outlet />
       </Suspense>
     </>
